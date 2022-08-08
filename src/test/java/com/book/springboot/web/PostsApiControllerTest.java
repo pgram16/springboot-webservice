@@ -3,7 +3,6 @@ package com.book.springboot.web;
 import com.book.springboot.domain.posts.PostRepository;
 import com.book.springboot.domain.posts.Posts;
 import com.book.springboot.web.dto.PostsResponseDto;
-import com.book.springboot.web.dto.PostsSaveRequestDto;
 import com.book.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Test;
@@ -44,10 +43,9 @@ public class PostsApiControllerTest {
         String title = "Post  title";
         String content = "content blablab";
 
-        PostsSaveRequestDto dto = PostsSaveRequestDto.builder()
+        PostsUpdateRequestDto dto = PostsUpdateRequestDto.builder()
                                                     .title(title)
-                                                    .conent(content)
-                                                    .author("authtor")
+                                                    .content(content)
                                                     .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts";
@@ -75,7 +73,7 @@ public class PostsApiControllerTest {
         String expectedTitle = "update title";
         String expectedContent = "update content..";
 
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).conent(expectedContent).build();
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).content(expectedContent).build();
 
         String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
 
